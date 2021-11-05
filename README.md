@@ -28,8 +28,7 @@ The  STACK deploys the following specific resources:
  
  
 2) To deploy the stack  on ```AWS``` via <strong>GitHub Actions</strong> see the following link: <br>
-<strong>GitHub Actions CI</strong>: <a href="https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/blob/main/.github/workflows/aws-migration-cdk.yml" rel="nofollow">https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/blob/main/.github/workflows/aws-migration-cdk.yml
-l</a></p>
+<strong>GitHub Actions CI</strong>: <a href="https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/blob/main/.github/workflows/aws-migration-cdk.yml" rel="nofollow">CI - AWS-TS-CDK Migration</a></p>
   
 
 # License
