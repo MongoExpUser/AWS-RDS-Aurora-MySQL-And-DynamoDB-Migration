@@ -75,6 +75,7 @@ jobs:
         sudo npm install @aws-cdk/aws-sns 
         sudo npm install @aws-cdk/aws-sqs 
         sudo npm install @aws-cdk/aws-sns-subscriptions
+        sudo npm install @aws-cdk/cloud-assembly-schema
 
     - name: Copy Files to Init Directory & List - Dev
       if: ${{ env.DEV == 'yes' }}
