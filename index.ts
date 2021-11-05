@@ -5,7 +5,7 @@
  *                                                                                                                *
  * Copyright © 2021 - present. MongoExpuser. All Rights Reserved.                                                 *
  *                                                                                                                *
- * License: MIT - See: https://github.com/MongoExpUser/AWS-RDS-MySQL-Migration/new/main/LICENSE.                  *
+ * License: MIT - https://github.com/MongoExpUser/AWS-RDS-MySQL-Migration/blob/main/LICENSE.                      *
  *                                                                                                                *
  * @License Ends                                                                                                  *
  **************************************************************************************************************** *
