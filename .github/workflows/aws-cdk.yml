@@ -9,7 +9,7 @@ on:
 
 jobs:
   aws-ts-cdk:
-    name: AWS-TS-CDK
+    name: AWS-TypeScript-CDK
     runs-on: ubuntu-latest
     env:
       DEV: 'no'
