@@ -14,7 +14,7 @@ jobs:
     env:
       DEV: 'yes'
       PROD: 'no'
-      PLAN: 'no'
+      PLAN: 'yes'
       DIFF: 'yes'
       APPLY: 'yes'
       DESTROY: 'no'
