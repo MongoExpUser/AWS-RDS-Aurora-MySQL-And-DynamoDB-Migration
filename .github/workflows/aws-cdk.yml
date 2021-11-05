@@ -49,7 +49,7 @@ jobs:
         # check CWD
         pwd
         sudo mkdir $CDK_INIT_DIRECTORY
-        cd $CDKTF_INIT_DIRECTORY
+        cd $CDK_INIT_DIRECTORY
         sudo cdk init app --language typescript
         # install aws-sdk (globally) and basic services for current project (locally)
         sudo npm install -g aws-cdk
