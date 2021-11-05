@@ -54,12 +54,8 @@ jobs:
         sudo cdk init app --language typescript
         # install basic services for current project (locally)
         # sudo npm run build
-        # sudo npm install aws-cdk
-        # sudo npm install typescript
-        sudo npm install ts-node --save-dev
-        sudo npm install typescript -g 
-        sudo npm install typescript --save-dev
-        
+        sudo npm install aws-cdk
+        sudo npm install typescript
         sudo npm install ts-node 
         sudo npm install @types/node
         sudo npm install @aws-cdk/core 
