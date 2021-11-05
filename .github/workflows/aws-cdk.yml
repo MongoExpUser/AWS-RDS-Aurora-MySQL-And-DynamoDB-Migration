@@ -8,8 +8,8 @@ on:
    # matches pull request for all branches and tag names
 
 jobs:
-  terraform:
-    name: Terraform
+  aws-ts-cdk:
+    name: AWS-TS-CDK
     runs-on: ubuntu-latest
     env:
       DEV: 'no'
