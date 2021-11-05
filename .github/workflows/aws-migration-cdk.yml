@@ -33,10 +33,10 @@ jobs:
     - uses: actions/checkout@v2
       # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
     
-    - name: Set Up Node.js 16.3.0
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16.3.0
+    #- name: Set Up Node.js 16.3.0
+    #  uses: actions/setup-node@v2
+    #  with:
+    #    node-version: 16.3.0
 
     - name: Install All Dependencies and CDK
       run: |
@@ -86,6 +86,8 @@ jobs:
         df -m
         free -m
         ls -l
+        sudo node -v
+        sudo npm -v
         sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
         sudo cdk synth --app "npx ts-node index.ts"
         
