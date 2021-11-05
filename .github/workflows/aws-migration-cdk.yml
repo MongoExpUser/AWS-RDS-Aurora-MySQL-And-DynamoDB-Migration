@@ -18,6 +18,7 @@ jobs:
       DIFF: 'yes'
       APPLY: 'yes'
       DESTROY: 'no' 
+      PROJECT_NAME: ${{ github.event.repository.name }}
       CDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
@@ -51,10 +52,12 @@ jobs:
         pwd
         sudo mkdir $CDK_INIT_DIRECTORY
         cd $CDK_INIT_DIRECTORY
-        sudo cdk init app --language typescript
+        sudo cdk init $PROJECT_NAME --language typescript
         # install basic services for current project (locally)
-        sudo npm install @aws-cdk/core @aws-cdk/aws-rds @aws-cdk/aws-secretsmanager @aws-cdk/aws-iam
-        sudo npm install @aws-cdk/aws-ec2 @aws-cdk/aws-s3 cdk-dynamo-table-viewer  @aws-cdk/aws-dynamodb
+        # install all services (locally)
+        sudo npm aws-cdk
+        # sudo npm install @aws-cdk/core @aws-cdk/aws-rds @aws-cdk/aws-secretsmanager @aws-cdk/aws-iam
+        # sudo npm install @aws-cdk/aws-ec2 @aws-cdk/aws-s3 cdk-dynamo-table-viewer  @aws-cdk/aws-dynamodb
         # sudo npm install @aws-cdk/aws-lambda @aws-cdk/aws-apigateway @aws-cdk/aws-ecs-patterns
         # sudo npm install @aws-cdk/aws-events @aws-cdk/aws-sns @aws-cdk/aws-sqs @aws-cdk/aws-sns-subscriptions
 
