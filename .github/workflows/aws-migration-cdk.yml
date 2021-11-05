@@ -12,11 +12,11 @@ jobs:
     name: AWS-TypeScript-CDK
     runs-on: ubuntu-latest
     env:
-      DEV: 'no'
+      DEV: 'yes'
       PROD: 'no'
       PLAN: 'no'
       APPLY: 'no'
-      DESTROY: 'yes'
+      DESTROY: 'no'
       CDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
       REPO_NAME: ${{ github.event.repository.name }}
