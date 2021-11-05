@@ -42,8 +42,8 @@ jobs:
       run: |
         sudo apt-get install npm
         sudo npm install -g npm
+        sudi npm install -g typescript
         sudo npm install -g aws-cdk
-        sudi npm install -g typescript aws-cdk
         #sudo npm install @types/node
         # check versions
         sudo node -v
