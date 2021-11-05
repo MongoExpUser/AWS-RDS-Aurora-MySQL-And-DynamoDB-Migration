@@ -1,3 +1,5 @@
+[![CI - AWS-TS-CDK Migration](https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/actions/workflows/aws-migration-cdk.yml/badge.svg)](https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/actions/workflows/aws-migration-cdk.yml)
+
 # AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration
 
 <br>
