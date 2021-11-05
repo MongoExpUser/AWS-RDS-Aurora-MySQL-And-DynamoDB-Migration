@@ -43,7 +43,8 @@ jobs:
         sudo apt-get install npm
         sudo npm install -g npm
         sudo npm install -g aws-cdk
-        sudo npm install @types/node
+        sudi npm install -g typescript aws-cdk
+        #sudo npm install @types/node
         # check versions
         sudo node -v
         sudo npm -v
@@ -52,8 +53,8 @@ jobs:
         sudo mkdir $CDK_INIT_DIRECTORY
         cd $CDK_INIT_DIRECTORY
         sudo cdk init app --language typescript
-        # install aws-sdk and basic services for current project (locally)
-        sudo npm install aws-cdk
+        # install basic services for current project (locally)
+        # sudo npm install aws-cdk
         sudo npm install @aws-cdk/core 
         sudo npm install @aws-cdk/aws-rds 
         sudo npm install @aws-cdk/aws-secretsmanager 
