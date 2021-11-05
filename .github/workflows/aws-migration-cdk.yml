@@ -79,7 +79,7 @@ jobs:
     - name: Copy Files to Init Directory & List - Dev
       if: ${{ env.DEV == 'yes' }}
       run: |
-        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-dev.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDKTF_INIT_DIRECTORY/index.ts
+        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-dev.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
         cd ./$CDK_INIT_DIRECTORY
         pwd
         df -m
@@ -90,7 +90,7 @@ jobs:
       if: ${{ env.PROD == 'yes' }}
       run: |
         run: |
-        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDKTF_INIT_DIRECTORY/index.ts
+        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
         cd ./$CDK_INIT_DIRECTORY
         pwd
         df -m
