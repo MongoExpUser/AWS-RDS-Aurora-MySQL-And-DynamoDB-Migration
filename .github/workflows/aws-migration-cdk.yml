@@ -54,11 +54,11 @@ jobs:
         cd $CDK_INIT_DIRECTORY
         sudo cdk init app --language typescript
         # install basic services for current project (locally)
-        sudo npm install aws-cdk
-        sudo npm install npm
-        sudo npm install typescript
-        sudo npm install aws-cdk
-        sudo npm install ts-node
+        #sudo npm install aws-cdk
+        #sudo npm install npm
+        #sudo npm install typescript
+        #sudo npm install aws-cdk
+        #sudo npm install ts-node
         sudo npm install @types/node
         sudo npm install @aws-cdk/core 
         sudo npm install @aws-cdk/aws-rds 
