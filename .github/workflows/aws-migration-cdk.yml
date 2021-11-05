@@ -14,9 +14,9 @@ jobs:
     env:
       DEV: 'yes'
       PROD: 'no'
-      PLAN: 'yes'
-      DIFF: 'yes'
-      APPLY: 'yes'
+      PLAN: 'no'
+      DIFF: 'no'
+      APPLY: 'no'
       DESTROY: 'no' 
       CDK_INIT_DIRECTORY: 'init'
       BASE_DIRECTORY: '/home/runner/work'
@@ -85,6 +85,8 @@ jobs:
         df -m
         free -m
         ls -l
+        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
+        sudo cdk synth --app "npx ts-node index.ts"
         
     - name: Copy Files to Init Directory & List - Prod
       if: ${{ env.PROD == 'yes' }}
