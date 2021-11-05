@@ -33,7 +33,7 @@ The  STACK deploys the following specific resources:
 
 # License
 
-Copyright © 2015 - present. MongoExpUser
+Copyright © 2021 - present. MongoExpUser
 
 Licensed under the MIT license.
 
