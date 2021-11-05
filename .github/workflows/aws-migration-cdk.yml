@@ -12,7 +12,7 @@ jobs:
     name: AWS-TypeScript-CDK
     runs-on: ubuntu-latest
     env:
-      DEV: 'yes'
+      DEV: 'no'
       PROD: 'no'
       PLAN: 'no'
       DIFF: 'no'
@@ -86,11 +86,6 @@ jobs:
         df -m
         free -m
         ls -l
-        #sudo rm package-lock.json
-        sudo node -v
-        sudo npm -v
-        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
-        sudo cdk synth --app "npx ts-node index.ts"
         
     - name: Copy Files to Init Directory & List - Prod
       if: ${{ env.PROD == 'yes' }}
