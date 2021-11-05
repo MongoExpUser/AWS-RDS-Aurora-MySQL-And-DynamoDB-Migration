@@ -52,13 +52,23 @@ jobs:
         sudo mkdir $CDK_INIT_DIRECTORY
         cd $CDK_INIT_DIRECTORY
         sudo cdk init app --language typescript
-        # install basic services for current project (locally)
-        # install all services (locally)
+        # install aws-sdk and basic services for current project (locally)
         sudo npm install aws-cdk
-        # sudo npm install @aws-cdk/core @aws-cdk/aws-rds @aws-cdk/aws-secretsmanager @aws-cdk/aws-iam
-        # sudo npm install @aws-cdk/aws-ec2 @aws-cdk/aws-s3 cdk-dynamo-table-viewer  @aws-cdk/aws-dynamodb
-        # sudo npm install @aws-cdk/aws-lambda @aws-cdk/aws-apigateway @aws-cdk/aws-ecs-patterns
-        # sudo npm install @aws-cdk/aws-events @aws-cdk/aws-sns @aws-cdk/aws-sqs @aws-cdk/aws-sns-subscriptions
+        sudo npm install @aws-cdk/core 
+        sudo npm install @aws-cdk/aws-rds 
+        sudo npm install @aws-cdk/aws-secretsmanager 
+        sudo npm install @aws-cdk/aws-iam
+        sudo npm install @aws-cdk/aws-ec2 
+        sudo npm install @aws-cdk/aws-s3 
+        sudo npm install cdk-dynamo-table-viewer 
+        sudo npm install @aws-cdk/aws-dynamodb
+        sudo npm install @aws-cdk/aws-lambda 
+        sudo npm install @aws-cdk/aws-apigateway 
+        sudo npm install @aws-cdk/aws-ecs-patterns
+        sudo npm install @aws-cdk/aws-events 
+        sudo npm install @aws-cdk/aws-sns 
+        sudo npm install @aws-cdk/aws-sqs 
+        sudo npm install @aws-cdk/aws-sns-subscriptions
 
     - name: Copy Files to Init Directory & List - Dev
       if: ${{ env.DEV == 'yes' }}
