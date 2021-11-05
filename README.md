@@ -24,11 +24,11 @@ The  STACK deploys the following specific resources:
 ## DEPLOYING THE CDK STACK
 
 1) To deploy the stack  on ```AWS``` via local computer, follow the steps in the following link:<br>
- <strong>Working with the AWS CDK in TypeScript</strong>: <a href="https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html" rel="nofollow">https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html</a></p>
+<strong><a href="https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html" rel="nofollow"> Working with the AWS CDK in TypeScript</a></p></strong>
  
  
 2) To deploy the stack  on ```AWS``` via <strong>GitHub Actions</strong> see the following link: <br>
-<strong>GitHub Actions CI</strong>: <a href="https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/blob/main/.github/workflows/aws-migration-cdk.yml" rel="nofollow">CI - AWS-TS-CDK Migration</a></p>
+ <strong><a href="https://github.com/MongoExpUser/AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration/blob/main/.github/workflows/aws-migration-cdk.yml" rel="nofollow">GitHub CI: AWS-TS-CDK Migration</a></p></strong>
   
 
 # License
