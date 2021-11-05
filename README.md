@@ -25,6 +25,19 @@ The  STACK deploys the following specific resources:
 
 1) To deploy the stack  on ```AWS``` via local computer, follow the steps in the following link:<br>
  <strong>Working with the AWS CDK in TypeScript</strong>: <a href="https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html" rel="nofollow">https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html</a></p>
+ 
+ 
+2) To deploy the stack  on ```AWS``` via <strong>GitHub Actions</strong> see the following link: <br>
+<strong>GitHub Actions CI</strong>: <a href="https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html" rel="nofollow">https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html
+l</a></p>
+  
+
+# License
+
+Copyright © 2015 - present. MongoExpUser
+
+Licensed under the MIT license.
+
   
   
 
