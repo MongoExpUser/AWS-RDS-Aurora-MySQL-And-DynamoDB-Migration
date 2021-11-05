@@ -41,10 +41,12 @@ jobs:
       run: |
         sudo apt-get install npm
         sudo npm install -g npm
+        sudo npm install -g aws-cdk
         sudo npm install @types/node
         # check versions
         sudo node -v
         sudo npm -v
+        # check CWD
         pwd
         sudo mkdir $CDK_INIT_DIRECTORY
         cd $CDKTF_INIT_DIRECTORY
