@@ -59,7 +59,7 @@ jobs:
         #sudo npm install typescript
         #sudo npm install aws-cdk
         #sudo npm install ts-node
-        sudo npm install @types/node
+        #sudo npm install @types/node
         sudo npm install @aws-cdk/core 
         sudo npm install @aws-cdk/aws-rds 
         sudo npm install @aws-cdk/aws-secretsmanager 
