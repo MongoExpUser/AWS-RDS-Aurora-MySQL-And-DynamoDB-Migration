@@ -100,29 +100,29 @@ jobs:
     - name: AWD CDK Plan
       if:  (env.PLAN == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
       run: |
-        cd ./$CDK_INIT_DIRECTORY
+        #cd ./$CDK_INIT_DIRECTORY
         sudo cdk synth --app "npx ts-node index.ts"
       
     - name: AWD CDK Difference
       if:  (env.DIFF == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
       run: |
-        cd ./$CDK_INIT_DIRECTORY
+        #cd ./$CDK_INIT_DIRECTORY
         run: sudo cdk diff --app "npx ts-node index.ts"
       
     - name: AWD CDK Apply - Dev
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && env.APPLY == 'yes' && env.DEV == 'yes'
       run: |
-        cd ./$CDK_INIT_DIRECTORY
+        #cd ./$CDK_INIT_DIRECTORY
         sudo cdk deploy --app "npx ts-node index.ts"
     
     - name: AWD CDK Apply - Prod
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && env.APPLY == 'yes' && env.PROD == 'yes'
       run: |
-        cd ./$CDK_INIT_DIRECTORY
+        #cd ./$CDK_INIT_DIRECTORY
         sudo cdk deploy --app "npx ts-node index.ts"
   
     - name: AWD CDK Destroy
       if: ${{ env.DESTROY == 'yes' }}
       run: |
-        cd ./$CDK_INIT_DIRECTORY
+        #cd ./$CDK_INIT_DIRECTORY
         sudo cdk destroy --app "npx ts-node index.ts"
