@@ -1,8 +1,8 @@
-# AWS-RDS-MySQL-Migration
+# AWS-RDS-Aurora-MySQL-And-DynamoDB-Migration
 
 <br>
 <strong>
-Create AWS RDS MySQL and Related Resources for a Migration Project, with AWS TypeScript CDK
+Create AWS RDS Aurora MySQL DB Cluster, AWS DynamoDB and Related Resources for a Migration Project, with AWS TypeScript CDK
 </strong>
 <br><br>
 The  STACK deploys the following specific resources:
