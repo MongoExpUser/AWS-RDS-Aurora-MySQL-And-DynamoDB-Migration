@@ -75,6 +75,7 @@ jobs:
         sudo npm install @aws-cdk/aws-sns 
         sudo npm install @aws-cdk/aws-sqs 
         sudo npm install @aws-cdk/aws-sns-subscriptions
+        sudo rm package-lock.json
 
     - name: Copy Files to Init Directory & List - Dev
       if: ${{ env.DEV == 'yes' }}
@@ -85,7 +86,7 @@ jobs:
         df -m
         free -m
         ls -l
-        sudo rm package-lock.json
+        #sudo rm package-lock.json
         sudo node -v
         sudo npm -v
         sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
