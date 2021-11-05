@@ -22,7 +22,7 @@ The  STACK deploys the following specific resources:
 ## DEPLOYING THE CDK STACK
 
 1) To deploy the stack  on ```AWS``` via local computer, follow the steps in the following link:<br>
- <strong>CDK for Terraform Application</strong>: <a href="https://learn.hashicorp.com/tutorials/terraform/cdktf-build-python?in=terraform/cdktf" rel="nofollow">https://learn.hashicorp.com/tutorials/terraform/cdktf-build-python?in=terraform/cdktf</a></p>
+ <strong>Working with the AWS CDK in TypeScript</strong>: <a href="https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html" rel="nofollow">https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html</a></p>
   
   
 
