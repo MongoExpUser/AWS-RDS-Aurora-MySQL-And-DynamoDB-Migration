@@ -56,6 +56,9 @@ jobs:
         # sudo npm run build
         # sudo npm install aws-cdk
         # sudo npm install typescript
+        sudo npm install ts-node --save-dev
+        sudo npm install typescript -g 
+        sudo npm install typescript --save-dev
         
         sudo npm install ts-node 
         sudo npm install @types/node
@@ -98,25 +101,20 @@ jobs:
         
     - name: AWD CDK Plan
       if:  (env.PLAN == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
-      #run: cdk synth --app "npx ts-node index.ts"
-      run: cdk synth "*"  # --app index.ts
+      run: cdk synth --app "npx ts-node index.ts"
       
     - name: AWD CDK Difference
       if:  (env.DIFF == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
-      #run: cdk diff --app "npx ts-node index.ts"
-      run: cdk diff "*"  # --app index.ts
+      run: cdk diff --app "npx ts-node index.ts"
       
     - name: AWD CDK Apply - Dev
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && env.APPLY == 'yes' && env.DEV == 'yes'
-      #run: cdk deploy --app "npx ts-node index.ts"
-      run: cdk deploy "*" # --app index.ts
+      run: cdk deploy --app "npx ts-node index.ts"
     
     - name: AWD CDK Apply - Prod
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && env.APPLY == 'yes' && env.PROD == 'yes'
-      #run: cdk deploy --app "npx ts-node index.ts"
-      run: cdk deploy "*" # --app index.ts
+      run: cdk deploy --app "npx ts-node index.ts"
   
     - name: AWD CDK Destroy
       if: ${{ env.DESTROY == 'yes' }}
-      #run: cdk destroy #--app "npx ts-node index.ts"
-      run: cdk destroy "*" --app index.ts
+      run: cdk destroy #--app "npx ts-node index.ts"
