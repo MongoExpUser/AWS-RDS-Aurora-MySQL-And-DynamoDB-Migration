@@ -96,7 +96,7 @@ export class ResourcesCreationStack extends Stack{
       specifiedPortIngressRuleDescription
     );
     
-    // 2a. Create secret (username and password), for AWS RDS Aurora DB Clsuter, with AWS Secret Manager
+    // 2a. Create secret (username and password), for AWS RDS Aurora DB Cluster, with AWS Secret Manager
     const auroraDBClusterSecret = new Secret(this, "AuroraDBClusterSecret", {
       description: this.param.secretDescription,
       secretName: this.concatenatedSecretName,
@@ -110,7 +110,7 @@ export class ResourcesCreationStack extends Stack{
       }
     });
     
-    // 2b. Get and pass in secret's username and password to be used as credentials for the AWS RDS Aurora DB Clsuter
+    // 2b. Get and pass in secret's username and password to be used as credentials for the AWS RDS Aurora DB Cluster
     const getSecret = Secret.fromSecretName(this, "ReferencedAuroraDBClusterSecret", this.concatenatedSecretName);
     this.credentials = {
       masterUsername : getSecret.secretValueFromJson("username"),
@@ -184,7 +184,7 @@ export class ResourcesCreationStack extends Stack{
       }
     }
     
-    // 4. Create the AWS RDS Aurora DB Clsuter (non-serverless)
+    // 4. Create the AWS RDS Aurora DB Cluster (non-serverless)
     const auroraDBCluster = new DatabaseCluster(this, "AuroraDBCluster", {
       clusterIdentifier: `${this.namePrefix}-${this.param.dbClusterIdentifier}`,
       defaultDatabaseName: this.param.databaseName,
@@ -226,7 +226,7 @@ export class ResourcesCreationStack extends Stack{
   
     
     // 5. specify dependencies: create vpc, security grp, buckets, and secret
-    //    before creating DB Clsuter and create vpc before creating  security grp
+    //    before creating DB Cluster and create vpc before creating  security grp
     vpcSecurityGroup.node.addDependency(vpc);
     auroraDBCluster.node.addDependency(vpc);
     auroraDBCluster.node.addDependency(vpcSecurityGroup);
@@ -235,7 +235,7 @@ export class ResourcesCreationStack extends Stack{
     auroraDBCluster.node.addDependency(auroraDBClusterSecret);
     
     
-    // 6. Create outputs: Aurora Vpc, Aurora Secret, Aurora DB Clsuter, S3 Bucket and S3 Bucket policy
+    // 6. Create outputs: Aurora Vpc, Aurora Secret, Aurora DB Cluster, S3 Bucket and S3 Bucket policy
     // a. vpc and related resources
     // a(i). output vpc
     new CfnOutput(this, "VpcOutput", {
@@ -258,7 +258,7 @@ export class ResourcesCreationStack extends Stack{
       description: this.param.secretDescription
     });
     
-    // c. output DB Clsuter
+    // c. output DB Cluster
     new CfnOutput(this, "AuroraDBClusterOutput", {
       exportName: "AuroraDBClusterOutput",
       value: String(`arn:aws:rds:${this.region}:${this.account}:cluster:${this.namePrefix}-${this.param.dbClusterIdentifier}`),
