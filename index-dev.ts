@@ -12,7 +12,7 @@
  *                                                                                                                *
  *  Database Migration Project.                                                                                   *
  *                                                                                                                *
- *  cdk-migration-stack.ts implements a STACK for the deployment of resources for Database Migration, including:  *
+ * index-dev.ts implements a STACK for the deployment of resources for Database Migration, including:             *
  *                                                                                                                *
  *  1) AWS VPC and related resources                                                                              *
  *                                                                                                                *
