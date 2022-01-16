@@ -1,75 +1,128 @@
-# ******************************************************************************************************************
-# *                                                                                                                *
-# *  Project: Migration Project                                                                                    *
-# *                                                                                                                *
-# *  Copyright © 2022 MongoExpUser. All Rights Reserved.                                                           *
-# *                                                                                                                *
-# *                                                                                                                *
-# ******************************************************************************************************************
-
-
-name: CI - MariaDB Migration
+name: CI - AWS-TS-CDK Migration
 
 on:
   push:
     branches:
     - main
   pull_request:
-  # matches pull request for all branches and tag name
-    
-defaults:
-  run:
-    shell: bash
-  env:
-    APPLY: 'no'
-    DESTROY: 'no'
-    INIT: 'yes'
-    PLAN: 'yes'
-    VALIDATE: 'no'
+   # matches pull request for all branches and tag names
 
 jobs:
-  start:
-    name: start
-    environment: start-stop
-    concurrency: start-stop
+  aws-ts-cdk:
+    name: AWS-TypeScript-CDK
     runs-on: ubuntu-latest
-    needs: []
-    if: ${{ (github.ref == 'refs/heads/main')  && (github.event_name == 'push') }}
+    env:
+      DEV: 'no'
+      PROD: 'no'
+      PLAN: 'no'
+      DIFF: 'no'
+      APPLY: 'no'
+      DESTROY: 'no' 
+      CDK_INIT_DIRECTORY: 'init'
+      BASE_DIRECTORY: '/home/runner/work'
+      REPO_NAME: ${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    defaults:
+      run:
+        shell: bash
+ 
     steps:
-    - name: Start Deployment
-      run: echo "Starting Deployment of RDS MariaDB.".
+    - uses: actions/checkout@v2
+      # note: checkout directory: /home/runner/work/${repo-name}/$${repo-name}
+    
+    #- name: Set Up Node.js 16.3.0
+    #  uses: actions/setup-node@v2
+    #  with:
+    #    node-version: 16.3.0
 
-  dev-deploy:
-    name: dev-deploy
-    environment: development
-    concurrency: development
-    runs-on: ubuntu-latest
-    needs: [start]
-    if: ${{ (github.ref == 'refs/heads/main')  && (github.event_name == 'push') }}
-    steps:
-    - name: GitHub Actions Runner Set-up
-      uses: actions/checkout@v2
-    #- name: Terraform Repo Security Scan Set-up
-    #  uses: triat/terraform-security-scan@v3
-    - name: Terraform CLI Set-up
-      uses: hashicorp/setup-terraform@v1
-    - name: Terraform Init
-      if: ${{ env.INIT == 'yes' }}
-      run: terraform init
-    - name: Terraform Validate
-      if: ${{ env.VALIDATE == 'yes' }}
-      run: terraform validate
-    - name: Terraform Variables
-      if: ${{ env.PLAN == 'yes' }} || ${{ env.APPLY == 'yes' }}
-      run: |-
-        cat dev.auto.tfvars <<EOF
-        EOF
-    - name: Terraform Plan
-      if: ${{ env.PLAN == 'yes' }}
-      run: terraform plan
-    - name: Terraform Apply
-      if: ${{ env.APPLY == 'yes' }}
-      run: terraform apply -var-file=dev.auto.tfvars -auto-approve
-    - name: Terraform Destroy
+    - name: Install All Dependencies and CDK
+      run: |
+        sudo apt-get install npm
+        sudo npm install -g npm
+        sudo npm install -g typescript
+        sudo npm install -g aws-cdk
+        sudo npm install -g ts-node
+        # check versions
+        sudo node -v
+        sudo npm -v
+        # check CWD
+        pwd
+        sudo mkdir $CDK_INIT_DIRECTORY
+        cd $CDK_INIT_DIRECTORY
+        sudo cdk init app --language typescript
+        # install basic services for current project (locally)
+        #sudo npm install aws-cdk
+        #sudo npm install npm
+        #sudo npm install typescript
+        #sudo npm install aws-cdk
+        #sudo npm install ts-node
+        #sudo npm install @types/node
+        sudo npm install @aws-cdk/core 
+        sudo npm install @aws-cdk/aws-rds 
+        sudo npm install @aws-cdk/aws-secretsmanager 
+        sudo npm install @aws-cdk/aws-iam
+        sudo npm install @aws-cdk/aws-ec2 
+        sudo npm install @aws-cdk/aws-s3 
+        sudo npm install cdk-dynamo-table-viewer 
+        sudo npm install @aws-cdk/aws-dynamodb
+        sudo npm install @aws-cdk/aws-lambda 
+        sudo npm install @aws-cdk/aws-apigateway 
+        sudo npm install @aws-cdk/aws-ecs-patterns
+        sudo npm install @aws-cdk/aws-events 
+        sudo npm install @aws-cdk/aws-sns 
+        sudo npm install @aws-cdk/aws-sqs 
+        sudo npm install @aws-cdk/aws-sns-subscriptions
+        sudo rm package-lock.json
+    - name: Copy Files to Init Directory & List - Dev
+      if: ${{ env.DEV == 'yes' }}
+      run: |
+        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-dev.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
+        cd ./$CDK_INIT_DIRECTORY
+        pwd
+        df -m
+        free -m
+        ls -l
+        
+    - name: Copy Files to Init Directory & List - Prod
+      if: ${{ env.PROD == 'yes' }}
+      run: |
+        run: |
+        sudo scp -r $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/index-prod.ts $BASE_DIRECTORY/$REPO_NAME/$REPO_NAME/$CDK_INIT_DIRECTORY/index.ts
+        cd ./$CDK_INIT_DIRECTORY
+        pwd
+        df -m
+        free -m
+        ls -l
+        
+    - name: AWD CDK Plan
+      if:  (env.PLAN == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
+      run: |
+        #cd ./$CDK_INIT_DIRECTORY
+        sudo cdk synth --app "npx ts-node index.ts"
+      
+    - name: AWD CDK Difference
+      if:  (env.DIFF == 'yes') && ( env.DEV == 'yes' || env.PROD == 'yes' )
+      run: |
+        #cd ./$CDK_INIT_DIRECTORY
+        run: sudo cdk diff --app "npx ts-node index.ts"
+      
+    - name: AWD CDK Apply - Dev
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push' && env.APPLY == 'yes' && env.DEV == 'yes'
+      run: |
+        #cd ./$CDK_INIT_DIRECTORY
+        sudo cdk deploy --app "npx ts-node index.ts"
+    
+    - name: AWD CDK Apply - Prod
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push' && env.APPLY == 'yes' && env.PROD == 'yes'
+      run: |
+        #cd ./$CDK_INIT_DIRECTORY
+        sudo cdk deploy --app "npx ts-node index.ts"
+  
+    - name: AWD CDK Destroy
       if: ${{ env.DESTROY == 'yes' }}
-      run: terraform destroy -auto-approve
+      run: |
+        #cd ./$CDK_INIT_DIRECTORY
+        sudo cdk destroy --app "npx ts-node index.ts"
