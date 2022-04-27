@@ -389,7 +389,7 @@ export class InvokeResourcesCreationStack {
       "exportBucketName" : exportBucketName,
     }
     
-    // 3 create props option object and store relevant STACK parameters (inclusding env) in the object
+    // 3. create props option object and store relevant STACK parameters (including env) in the object
     const propsOptions: any = {
       env: env,
       stackId: stackId,
@@ -399,7 +399,7 @@ export class InvokeResourcesCreationStack {
       analyticsReporting: true
     }
     
-    // 3. instantiate STACK; pass in stackId, propsOptions & inputParametersObj; to create resources
+    // 4. instantiate STACK; pass in stackId, propsOptions & inputParametersObj; to create resources
      const createResource = new ResourcesCreationStack(new App(), stackId, propsOptions, inputParametersObj);
   }
 }
