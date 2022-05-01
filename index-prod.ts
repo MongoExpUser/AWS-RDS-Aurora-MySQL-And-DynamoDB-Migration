@@ -55,6 +55,9 @@ export class ResourcesCreationStack extends Stack{
     
     // 1. Create vpc and all vpc-related resoources, to be used in creating other resources
     // a. create vpc with vpc-subnets
+    // ISOLATED subnet: routes traffic to the Internet (in the VPC) and does not require NAT gateways
+    // PRIVATE subnet: routes ONLY to the internet, but not vice-versa
+    // PUBLIC subnet: connects to the Internet
     // note 1: One NAT gateway/instance per Availability Zone, is created by default when public subet is created
     // note 2: the default route is setup for public subnet, so set natGateways to zero (0) if not needed
     const publicSubnet  = "public";
