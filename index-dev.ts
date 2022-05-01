@@ -74,6 +74,10 @@ export class ResourcesCreationStack extends Stack{
     
     // b. create security group that allow incoming traffic on ports: 22 and this.param.port (i.e. db cluster port for access)
     // i. create the vpc-sgs
+    //Ref: fo subnet definitions
+    // ISOLATED Subnets - do not route traffic to the Internet (in the VPC) and do not require NAT gateways.
+    // PRIVATE Subnet - only routes to the internet, but not vice versa.
+    // PUBLIC Subnet - connects to the Internet.
     const vpcOutBoundDescription = "Outbound: Allow SSH Access to EC2 instances"
     const sshIngressRuleDescription = "Ingress Rule: Allow SSH Access From Outside";
     const specifiedPortIngressRuleDescription = "Ingress Rule: Allow Access to Specified Port Access From Outside"
